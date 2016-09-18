@@ -260,8 +260,6 @@
 
 \DeclareOption{landscape}{\@unsupportedoption{landscape}}
 
-\DeclareOption{legacycopyright}{\@setflag \@legacycopyright = \@true}
-
 \DeclareOption{legalpaper}{\@unsupportedoption{legalpaper}}
 
 \DeclareOption{letterpaper}{\@unsupportedoption{letterpaper}}
@@ -618,8 +616,7 @@
   \fi
   \vspace{2pt}
   \noindent \textsl{\@conferencename}\quad \@conferenceinfo \par
-  \noindent Copyright \copyright\ \@copyrightyear\ ACM \@copyrightdata
-    \dots \@reprintprice\par
+  \noindent Copyright \copyright\ \@copyrightyear\ ACM \par
   \setcopyrightdoi}
 
 \def \publicationrights #1{%                                    {type}
@@ -629,174 +626,26 @@
     \@latex@error{The publication right '#1' is invalid}{}%
   \fi}
 
-\expandafter\def \csname rightsstatementauthor-pays\endcsname{%
-  \noindent
-  Permission to make digital or hard copies of part or all of this work for
-  personal or classroom use is granted without fee provided that copies are
-  not made or distributed for profit or commercial advantage and that copies
-  bear this notice and the full citation on the first page. Copyrights for
-  third-party components of this work must be honored. For all other uses,
-  contact the Owner/Author(s). \par
-  \vspace{2pt}
-  \noindent \textsl{\@conferencename}\quad \@conferenceinfo \par
-  \noindent Copyright \copyright\ \@copyrightyear\ held by owner/author(s). \par
-  ACM \@copyrightdata \dots \@reprintprice\par
-  \setcopyrightdoi}
-
 % This is the default rights statement.
 
-\def \rightsstatementlicensed {%
+\def \rightsstatementccby {%
   \noindent
-  Permission to make digital or hard copies of part or all of this work for
-  personal or classroom use is granted without fee provided that copies are
-  not made or distributed for profit or commercial advantage and that copies
-  bear this notice and the full citation on the first page. Copyrights for
-  components of this work owned by others than ACM must be honored.
-  Abstracting with credit is permitted. To copy otherwise, to republish, to
-  post on servers, or to redistribute to lists, contact the Owner/Author(s).
-  Request permissions from permissions@acm.org or Publications Dept., ACM,
-  Inc., fax +1~(212) 869-0481. \par
+  This work is licensed under a \href{http://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License (CC BY 4.0)}.\par
   \vspace{2pt}
   \noindent \textsl{\@conferencename}\quad \@conferenceinfo \par
-  \noindent Copyright \copyright\ \@copyrightyear\ held by owner/author(s). Publication rights licensed to ACM. \par
-  ACM \@copyrightdata \dots \@reprintprice\par
-  \setcopyrightdoi}
+  \noindent Copyright \copyright\ \@copyrightyear\ held by owner/author(s).}
 
 \if \@notp{\@legacycopyright}%
-  \publicationrights{licensed}%
+  \publicationrights{ccby}%
 \fi
 
-\def \rightsstatementtransferred {%
+\def \rightsstatementccbynd {%
   \noindent
-  Permission to make digital or hard copies of part or all of this work for
-  personal or classroom use is granted without fee provided that copies are
-  not made or distributed for profit or commercial advantage and that copies
-  bear this notice and the full citation on the first page. Copyrights for
-  components of this work owned by others than ACM must be honored.
-  Abstracting with credit is permitted. To copy otherwise, to republish, to
-  post on servers, or to redistribute to lists, requires prior specific
-  permission and/or a fee. Request permissions from permissions@acm.org or
-  Publications Dept., ACM, Inc., fax +1~(212) 869-0481. \par
+  This work is licensed under a \href{http://creativecommons.org/licenses/by-nd/4.0/}{Creative Commons Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)}.\par
   \vspace{2pt}
   \noindent \textsl{\@conferencename}\quad \@conferenceinfo \par
-  \noindent Copyright \copyright\ \@copyrightyear\ ACM \@copyrightdata \dots \@reprintprice\par
-  \setcopyrightdoi}
+  \noindent Copyright \copyright\ \@copyrightyear\ held by owner/author(s).}
 
-\newcommand{\reprintprice}[1]{%
-  \gdef \@reprintprice {#1}}
-
-\reprintprice{\$15.00}
-
-\def \setcopyrightdoi {%
-  \if \@emptydefp{\@copyrightdoi}%
-    \if \@andp{\@notp{\@preprint}}{\@notp{\@legacycopyright}}%
-      \@latex@warning{Copyright DOI has not been provided
-                      (\noexpand\copyrightdoi)}{}%
-    \fi
-  \else
-    \noindent DOI: http://dx.doi.org/10.1145/\@copyrightdoi\par
-  \fi}
-  
-
-% Legacy commands.
-
-\newcommand{\permission}[1]{%
-  \gdef \@permission {#1}}
-
-%%%\permission{%
-%%%  Permission to make digital or hard copies of part or all of this work for
-%%%  personal or classroom use is granted without fee provided that copies are
-%%%  not made or distributed for profit or commercial advantage and that copies
-%%%  bear this notice and the full citation on the first page. Copyrights for
-%%%  components of this work owned by others than ACM must be honored.
-%%%  Abstracting with credit is permitted. To copy otherwise, to republish, to
-%%%  post on servers, or to redistribute to lists, requires prior specific
-%%%  permission and/or a fee. Request permissions from permissions@acm.org or
-%%%  Publications Dept., ACM, Inc., fax +1 (212) 869-0481.}
-
-% Here we have some alternate permission statements and copyright lines:
-
-\newcommand{\ACMCanadapermission}{%
-  \@legacycopyrighterror{\ACMCanadapermission}%
-  \permission{%
-    Copyright \@copyrightyear\ Association for Computing Machinery.
-    ACM acknowledges that
-    this contribution was authored or co-authored by an affiliate of the
-    National Research Council of Canada (NRC).
-    As such, the Crown in Right of
-    Canada retains an equal interest in the copyright, however granting
-    nonexclusive, royalty-free right to publish or reproduce this article,
-    or to allow others to do so, provided that clear attribution
-    is also given to the authors and the NRC.}}
-
-\newcommand{\ACMUSpermission}{%
-  \@legacycopyrighterror{\ACMUSpermission}%
-  \permission{%
-    Copyright \@copyrightyear\ Association for
-    Computing Machinery. ACM acknowledges that
-    this contribution was authored or co-authored
-    by a contractor or affiliate
-    of the U.S. Government. As such, the Government retains a nonexclusive,
-    royalty-free right to publish or reproduce this article,
-    or to allow others to do so, for Government purposes only.}}
-
-\newcommand{\authorpermission}{%
-  \@legacycopyrighterror{\authorpermission}%
-  \permission{%
-    Permission to make digital or hard copies of part or all of this work for
-    personal or classroom use is granted without fee provided that copies are
-    not made or distributed for profit or commercial advantage and that copies
-    bear this notice and the full citation on the first page. Copyrights for
-    third-party components of this work must be honored. For all other uses,
-    contact the Owner/Author.}%
-  \toappear{%
-    \noindent \@permission \par
-    \vspace{2pt}
-    \noindent \textsl{\@conferencename}\quad \@conferenceinfo \par
-    ACM \@copyrightdata.}}
-
-\newcommand{\Sunpermission}{%
-  \@legacycopyrighterror{\Sunpermission}%
-  \permission{%
-    Copyright is held by Sun Microsystems, Inc.}%
-  \toappear{%
-    \noindent \@permission \par
-    \vspace{2pt}
-    \noindent \textsl{\@conferencename}\quad \@conferenceinfo \par
-    ACM \@copyrightdata.}}
-
-\newcommand{\USpublicpermission}{%
-  \@legacycopyrighterror{\USpublicpermission}%
-  \permission{%
-    This paper is authored by an employee(s) of the United States
-    Government and is in the public domain.}%
-  \toappear{%
-    \noindent \@permission \par
-    \vspace{2pt}
-    \noindent \textsl{\@conferencename}\quad \@conferenceinfo \par
-    ACM \@copyrightdata.}}
-
-\newcommand{\authorversion}[4]{%
-  \@legacycopyrighterror{\authorversion}%
-  \permission{%
-  Copyright \copyright\ ACM, #1. This is the author's version of the work.
-  It is posted here by permission of ACM for your personal use.
-  Not for redistribution. The definitive version was published in
-  #2, #3, http://doi.acm.org/10.1145/#4.}}
-
-\def \exclusivelicense {%
-  \@latex@error{Deprecated;
-                you probably want `\noexpand\publicationrights{licensed}'}{}}
-
-\def \permissiontopublish {%
-  \@latex@error{Deprecated;
-                you probably want `\noexpand\publicationrights{author-pays}'}{}}
-
-\def \@legacycopyrighterror #1{%
-  \if \@notp{\@legacycopyright}%
-    \@latex@error{Copyright permission '\noexpand#1' is deprecated; use
-                  'legacycopyright' class option to allow it}{}%
-  \fi}
 
 %                       Enunciations
 %                       ------------
