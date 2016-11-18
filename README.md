@@ -1,5 +1,5 @@
-Meta'16 Author Kit
-==================
+MoreVMs'17 Author Kit
+=====================
 
 This repository contains an adapted version of the SIGPLAN conference latex template.
 
