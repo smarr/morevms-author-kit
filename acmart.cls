@@ -1064,7 +1064,7 @@ Computing Machinery]
 \acmConference[Conference'17]{ACM Conference}{July 2017}{Washington,
   DC, USA}
 \def\acmBooktitle#1{\gdef\@acmBooktitle{#1}}
-\acmBooktitle{Proceedings of \acmConference@name
+\acmBooktitle{\acmConference@name
        \ifx\acmConference@name\acmConference@shortname\else
          \ (\acmConference@shortname)\fi}
 \def\@editorsAbbrev{(Ed.)}
@@ -1323,7 +1323,7 @@ Computing Machinery]
     acmcopyright,acmlicensed,rightsretained,%
     usgov,usgovmixed,cagov,cagovmixed,licensedusgovmixed,%
     licensedcagov,licensedcagovmixed,othergov,licensedothergov,%
-    iw3c2w3,iw3c2w3g}{%
+    iw3c2w3,iw3c2w3g,ccby,ccbyncnd}{%
   \@printpermissiontrue
   \@printcopyrighttrue
   \@acmownedtrue
@@ -1367,6 +1367,12 @@ Computing Machinery]
    \@acmownedfalse
   \fi
   \ifnum\acm@copyrightmode=14\relax % iw3c2w3g
+   \@acmownedfalse
+  \fi
+  \ifnum\acm@copyrightmode=15\relax % ccby
+   \@acmownedfalse
+  \fi
+  \ifnum\acm@copyrightmode=16\relax % ccbyncnd
    \@acmownedfalse
   \fi}
 \def\setcopyright#1{\setkeys{ACM@}{acmcopyrightmode=#1}}
@@ -1434,13 +1440,13 @@ Computing Machinery]
    and\hspace*{.5pt}/or  a fee. Request permissions from
    permissions@acm.org.
   \or % rightsretained
-   Permission to make digital or hard copies of part or all of this work
-   for personal or classroom use is granted without fee provided that
-   copies are not made or distributed for profit or commercial advantage
-   and that copies bear this notice and the full citation on the first
-   page. Copyrights for third-party components of this work must be
-   honored. For all other uses, contact the
-   owner\hspace*{.5pt}/author(s).
+   % Permission to make digital or hard copies of part or all of this work
+   % for personal or classroom use is granted without fee provided that
+   % copies are not made or distributed for profit or commercial advantage
+   % and that copies bear this notice and the full citation on the first
+   % page. Copyrights for third-party components of this work must be
+   % honored. For all other uses, contact the
+   % owner\hspace*{.5pt}/author(s).
   \or % usgov
    This paper is authored by an employee(s) of the United States
    Government and is in the public domain. Non-exclusive copying or
@@ -1531,6 +1537,13 @@ Computing Machinery]
    (CC~BY-NC-ND~4.0) license. Authors reserve their rights to
    disseminate the work on their personal and corporate Web sites with
    the appropriate attribution.
+ \or % ccby
+   This paper is published under the Creative Commons Attribution~4.0
+   International (CC~BY~4.0) license.
+ \or % ccbyncnd
+   This paper is published under the Creative Commons
+   Attribution-NonCommercial-NoDerivs~4.0 International
+   (CC~BY-NC-ND~4.0) license.
  \fi}
 \def\copyrightyear#1{\def\@copyrightyear{#1}}
 \copyrightyear{\@acmYear}
@@ -1607,18 +1620,19 @@ Computing Machinery]
     \else
       \if@ACM@authorversion
           This is the author's version of the work. It is posted here for
-          your personal use. Not for redistribution. The definitive Version
-          of Record was published in
-          \if@ACM@journal
-            \emph{\@journalName}%
-          \else
-            \emph{\@acmBooktitle}%
-          \fi
-          \ifx\@acmDOI\@empty
-          .
-          \else
-            , \@formatdoi{\@acmDOI}.
-          \fi\\
+          your personal use. Not for redistribution.
+          %  The definitive Version
+          % of Record was published in
+          % \if@ACM@journal
+          %   \emph{\@journalName}%
+          % \else
+          %   \emph{\@acmBooktitle}%
+          % \fi
+          % \ifx\@acmDOI\@empty
+          % .
+          % \else
+          %   , \@formatdoi{\@acmDOI}.
+          % \fi\\
         \else
           \if@ACM@journal
             \@permissionCodeOne/\@acmYear/\@acmMonth-ART\@acmArticle
@@ -2136,8 +2150,8 @@ Computing Machinery]
      \ifx\@acmEditors\@empty\textit{.}\else
        \andify\@acmEditors\textit{, }\@acmEditors~\@editorsAbbrev.%
      \fi\
-     ACM, New York, NY, USA%
-       \@article@string\unskip, \ref{TotPages}~\@pages@word.
+     % ACM, New York, NY, USA%
+     %   \@article@string\unskip, \ref{TotPages}~\@pages@word.
   \fi
   \ifx\@acmDOI\@empty\else\@formatdoi{\@acmDOI}\fi
 \par\egroup}
